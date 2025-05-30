@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Zahra Portfolio | Contact Me</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../img/favicon_io (3)/android-chrome-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon_io (3)/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon_io (3)/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon_io (3)/favicon-16x16.png">
+    <link rel="manifest" href="../img/favicon_io (3)/site.webmanifest">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    /* Animated Gradient Background */
+    .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #8e44ad, #aa4b41, #42a3e3, #2ecc71);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      z-index: -1;
+      filter: brightness(0.3);
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.25);
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Logo */
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .logo i {
+      color: #ff6b6b;
+    }
+
+    /* Menu */
+    .menu {
+      display: flex;
+      gap: 15px;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: 0.3s;
+      position: relative;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .menu a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .menu a.active {
+      background-color: rgba(255, 107, 107, 0.3);
+      color: #ffd3d3;
+    }
+
+    /* Contact Section */
+    #contact {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 30px 50px;
+      position: relative;
+    }
+
+    .contact-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .contact-title {
+      text-align: center;
+      color: white;
+      font-size: 3rem;
+      position: relative;
+      padding-bottom: 15px;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.5s forwards;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    .contact-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 4px;
+      background: linear-gradient(90deg, #ff6b6b, #ffb142);
+      border-radius: 2px;
+    }
+
+    .contact-description {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.8s forwards;
+    }
+
+    /* Contact Content */
+    .contact-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .contact-form {
+      flex: 1;
+      min-width: 350px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: slideInRight 1s ease 1s forwards;
+    }
+
+    .form-title {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: #ffb142;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .form-title i {
+      color: #ff6b6b;
+      font-size: 1.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 15px;
+      border: none;
+      background: rgba(0, 0, 0, 0.2);
+      color: white;
+      font-size: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: #ff6b6b;
+      box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+    }
+
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 15px;
+      border: none;
+      background: linear-gradient(90deg, #ff6b6b, #ffb142);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+    }
+
+    .submit-btn i {
+      margin-left: 10px;
+    }
+
+    /* Contact Info */
+    .contact-info {
+      flex: 1;
+      min-width: 350px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: slideInLeft 1s ease 1.2s forwards;
+    }
+
+    .info-title {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: #42a3e3;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .info-title i {
+      color: #42a3e3;
+      font-size: 1.8rem;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(66, 163, 227, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #42a3e3;
+      flex-shrink: 0;
+    }
+
+    .contact-content-text {
+      flex: 1;
+    }
+
+    .contact-item-title {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .contact-item-detail {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .contact-item-detail a {
+      color: #a8d8ff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .contact-item-detail a:hover {
+      color: #ff6b6b;
+      text-decoration: underline;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: white;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 107, 107, 0.3);
+    }
+
+    /* Map */
+    .map-container {
+      margin-top: 40px;
+      border-radius: 15px;
+      overflow: hidden;
+      height: 250px;
+      background: rgba(0, 0, 0, 0.2);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url(img/dd.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(26, 26, 46, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .map-overlay h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #ffb142;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .map-overlay p {
+      max-width: 400px;
+      line-height: 1.7;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      text-align: center;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideInRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes slideInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Decorative Elements */
+    .contact-form::before, .contact-info::before {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #ff6b6b, #ffb142);
+      filter: blur(50px);
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    .contact-form::before {
+      top: -50px;
+      right: -50px;
+    }
+
+    .contact-info::before {
+      bottom: -50px;
+      left: -50px;
+      background: linear-gradient(45deg, #42a3e3, #2ecc71);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .contact-content {
+        flex-direction: column;
+      }
+      
+      .contact-form, .contact-info {
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+      }
+      
+      .contact-title {
+        font-size: 2.5rem;
+      }
+      
+      .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .contact-form, .contact-info {
+        padding: 25px;
+      }
+      
+      .form-title, .info-title {
+        font-size: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .contact-title {
+        font-size: 2rem;
+      }
+      
+      .contact-description {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="background"></div>
+
+  <!-- Header with Logo and Menu -->
+  <header class="header">
+    <div class="logo">
+      <i class="fas fa-laptop-code"></i>
+      Hela Zahra Portfolio 🌸
+    </div>
+    <nav class="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="project.html">Projects</a>
+      <a href="contect.html" class="active">Contact Me</a>
+    </nav>
+  </header>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact-container">
+      <h1 class="contact-title">Get In Touch</h1>
+      <p class="contact-description">
+        Have a project in mind or want to discuss potential opportunities? Feel free to reach out using the form below or through my contact information.
+      </p>
+      
+      <div class="contact-content">
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <h2 class="form-title"><i class="fas fa-paper-plane"></i> Send a Message</h2>
+          <form>
+            <div class="form-group">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" id="name" class="form-input" placeholder="Enter your full name">
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" id="email" class="form-input" placeholder="example@example.com">
+            </div>
+            
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" id="subject" class="form-input" placeholder="What is this regarding?">
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label">Your Message</label>
+              <textarea id="message" class="form-textarea" placeholder="Type your message here..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+        
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <h2 class="info-title"><i class="fas fa-address-card"></i> Contact Information</h2>
+          
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-content-text">
+                <h3 class="contact-item-title">Phone Number</h3>
+                <p class="contact-item-detail">
+                  <a href="tel:+93786491157">+93 786 491 157</a>
+                </p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-telegram"></i>
+              </div>
+              <div class="contact-content-text">
+                <h3 class="contact-item-title">Telegram</h3>
+                <p class="contact-item-detail">
+                  <a href="https://t.me/helaizahra" target="_blank">@helaizahra</a>
+                </p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-content-text">
+                <h3 class="contact-item-title">Email</h3>
+                <p class="contact-item-detail">
+                  <a href="mailto:helaizahra21@gmail.com">helaizahra21@gmail.com</a>
+                </p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-content-text">
+                <h3 class="contact-item-title">Location</h3>
+                <p class="contact-item-detail">
+                  Kabul, Afghanistan
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          </div>
+          
+          <div class="map-container">
+            <div class="map-overlay">
+              <h3>My Location</h3>
+              <p>Kabul, Afghanistan - The Heart of Asia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    Designed with <i class="fas fa-heart" style="color:#ff6b6b;"></i> by Zahra | © 2023 All Rights Reserved
+  </footer>
+</body>
+</html>
+

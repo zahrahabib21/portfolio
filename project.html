@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zahra's Portfolio | Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="../img/favicon_io (3)/android-chrome-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon_io (3)/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon_io (3)/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon_io (3)/favicon-16x16.png">
+    <link rel="manifest" href="../img/favicon_io (3)/site.webmanifest">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      color: #fff;
+      padding-bottom: 50px;
+    }
+
+    /* Animated Gradient Background */
+    .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #8e44ad, #aa4b41, #42a3e3, #2ecc71);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      z-index: -1;
+      filter: brightness(0.3);
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.25);
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Logo */
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      color: #ff6b6b;
+    }
+
+    /* Menu */
+    .menu {
+      display: flex;
+      gap: 15px;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: 0.3s;
+      position: relative;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .menu a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .menu a.active {
+      background-color: rgba(255, 107, 107, 0.3);
+      color: #ffd3d3;
+    }
+
+    /* Projects Section */
+    #projects {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 30px 50px;
+      position: relative;
+    }
+
+    .projects-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .projects-title {
+      text-align: center;
+      color: white;
+      font-size: 2.8rem;
+      position: relative;
+      padding-bottom: 15px;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.5s forwards;
+    }
+
+    .projects-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 4px;
+      background: linear-gradient(90deg, #ff6b6b, #ffb142);
+      border-radius: 2px;
+    }
+
+    .projects-description {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.8s forwards;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 15px;
+      overflow: hidden;
+      animation: float 4s infinite alternate;
+      transform: translateY(0);
+      opacity: 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .frame:nth-child(1) { animation: fadeInUp 0.8s ease 0.3s forwards, float 4s infinite 1s alternate; }
+    .frame:nth-child(2) { animation: fadeInUp 0.8s ease 0.4s forwards, float 4s infinite 1.2s alternate; }
+    .frame:nth-child(3) { animation: fadeInUp 0.8s ease 0.5s forwards, float 4s infinite 1.4s alternate; }
+    .frame:nth-child(4) { animation: fadeInUp 0.8s ease 0.6s forwards, float 4s infinite 1.6s alternate; }
+    .frame:nth-child(5) { animation: fadeInUp 0.8s ease 0.7s forwards, float 4s infinite 1.8s alternate; }
+    .frame:nth-child(6) { animation: fadeInUp 0.8s ease 0.8s forwards, float 4s infinite 2.0s alternate; }
+    .frame:nth-child(7) { animation: fadeInUp 0.8s ease 0.9s forwards, float 4s infinite 2.2s alternate; }
+    .frame:nth-child(8) { animation: fadeInUp 0.8s ease 0.10s forwards, float 4s infinite 2.4s alternate; }
+    .frame:nth-child(9) { animation: fadeInUp 0.8s ease 0.11s forwards, float 4s infinite 2.6s alternate; }
+  
+
+
+    .frame:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      z-index: 2;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .frame:hover .project-image {
+      transform: scale(1.1);
+    }
+
+    .project-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      padding: 30px 20px 20px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .frame:hover .project-overlay {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .project-title {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .project-tag {
+      background: rgba(255, 107, 107, 0.2);
+      color: #ffb6b6;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .project-description {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .project-link {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+    }
+
+    .project-link:hover {
+      background: rgba(255, 107, 107, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .project-link i {
+      margin-right: 8px;
+      font-size: 0.9rem;
+    }
+
+    .flower {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: #ff6b6b;
+      border-radius: 50%;
+      opacity: 0.7;
+      z-index: 1;
+      animation: spin 15s linear infinite;
+    }
+
+    .flower::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #ffb142;
+      border-radius: 50%;
+      transform: rotate(45deg);
+      opacity: 0.7;
+    }
+
+    .top-left {
+      top: 15px;
+      left: 15px;
+    }
+
+    .middle-right {
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+    }
+
+    .bottom-left {
+      bottom: 15px;
+      left: 15px;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-15px); }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1100px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+      }
+      
+      .projects-title {
+        font-size: 2.2rem;
+      }
+      
+      .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .gallery {
+        gap: 20px;
+        padding: 10px;
+      }
+      
+      .project-overlay {
+        padding: 20px 15px 15px;
+      }
+      
+      .project-title {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .projects-title {
+        font-size: 1.8rem;
+      }
+      
+      .projects-description {
+        font-size: 1rem;
+      }
+      
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .project-overlay {
+        padding: 15px 12px 12px;
+      }
+    }
+
+    /* Project Categories */
+    .categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: fadeIn 1s ease 1s forwards;
+    }
+
+    .category {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgb(15, 13, 13);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .category:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .category.web {
+      background: rgba(66, 163, 227, 0.2);
+      color: #a8d8ff;
+    }
+
+    .category.app {
+      background: rgba(46, 204, 113, 0.2);
+      color: #a8ffc5;
+    }
+
+    .category.ui {
+      background: rgba(255, 107, 107, 0.2);
+      color: #ffd3d3;
+    }
+
+    .category.game {
+      background: rgba(142, 68, 173, 0.2);
+      color: #e0b0ff;
+    }
+
+    .category.active {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Featured Projects */
+    .featured {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin-bottom: 60px;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.2s forwards;
+    }
+
+    .featured-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #ffb142;
+      margin-bottom: 20px;
+    }
+
+    .featured-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .featured-card {
+      width: 100%;
+      max-width: 500px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: transform 0.4s ease;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .featured-image {
+      width: 40%;
+      min-height: 200px;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s ease;
+    }
+
+    .featured-card:hover .featured-image {
+      transform: scale(1.05);
+    }
+
+    .featured-content {
+      width: 60%;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-name {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #100f0f;
+    }
+
+    .featured-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .featured-tag {
+      background: rgba(255, 107, 107, 0.2);
+      color: #ffb6b6;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .featured-desc {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    /* Stats Section */
+    .stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin: 40px 0;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.4s forwards;
+    }
+    
+    .stat-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 20px 30px;
+      text-align: center;
+      min-width: 180px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+    
+    .stat-box:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ff6b6b, #ffb142);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    /* Floating Particles */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0.4;
+    }
+    
+    .particle-1 {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #ff6b6b, transparent);
+      top: 10%;
+      left: 5%;
+      animation: floatParticle 25s infinite alternate;
+    }
+    
+    .particle-2 {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #42a3e3, transparent);
+      bottom: 15%;
+      right: 10%;
+      animation: floatParticle 30s infinite alternate-reverse;
+    }
+    
+    @keyframes floatParticle {
+      0% {
+        transform: translate(0, 0);
+      }
+      25% {
+        transform: translate(50px, -70px);
+      }
+      50% {
+        transform: translate(100px, 50px);
+      }
+      75% {
+        transform: translate(-80px, 100px);
+      }
+      100% {
+        transform: translate(-100px, -50px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="background"></div>
+  
+  <!-- Floating Particles -->
+  <div class="particle particle-1"></div>
+  <div class="particle particle-2"></div>
+
+  <!-- Header with Logo and Menu -->
+  <header class="header">
+    <div class="logo">
+      <i class="fas fa-laptop-code"></i>
+      Zahra's Portfolio 🌸
+    </div>
+    <nav class="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="project.html" class="active">Projects</a>
+      <a href="contect.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="projects-container">
+      <h1 class="projects-title">My Projects</h1>
+      <p class="projects-description">
+        This is a collection of my work from the very beginning of my journey into frontend development. I started learning HTML and gradually moved to CSS. These projects show my progress so far — and the journey is still going!
+      </p>
+      
+      <!-- Statistics -->
+      <div class="stats">
+        <div class="stat-box">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Completed Projects</div>
+        </div>
+  
+        <div class="stat-box">
+          <div class="stat-number">4+</div>
+          <div class="stat-label">munth Experience</div>
+        </div>
+      </div>
+      
+      <!-- Project Categories -->
+      <div class="categories">
+        <div class="category web active">Front End</div>
+        <div class="category app">Back End</div>
+        <div class="category ui">Full-Stack</div>
+        <div class="category game">Game Development</div>
+      </div>
+      
+      <!-- Featured Projects -->
+      <div class="featured">
+        <h2 class="featured-title">featured Projects</h2>
+        <div class="featured-container">
+          <div class="featured-card">
+            <div class="featured-image" style="background-image: url('img/dd.jpg');"></div>
+            <div class="featured-content">
+              <h3 class="featured-name">Tourist Project</h3>
+              <div class="featured-tags">
+                <span class="featured-tag">HTML</span>
+                <span class="featured-tag">CSS</span>
+                <span class="featured-tag">JavaScript</span>
+              </div>
+              <p class="featured-desc">This project is for tourists who want to visit Afghanistan and might need a translator. It’s not fully completed yet — we are still adding new features to it as we go.</p>
+              <a href="https://zahrahabib21.github.io/tourist/" class="project-link"><i class="fas fa-arrow-right"></i> View Project</a>
+            </div>
+          </div>
+          
+          <div class="featured-card">
+            <div class="featured-image" style="background-image: url('img/ee.jpg');"></div>
+            <div class="featured-content">
+              <h3 class="featured-name">Afghan Proverbs</h3>
+              <div class="featured-tags">
+                <span class="featured-tag">HTML</span>
+                <span class="featured-tag">CSS</span>
+              </div>
+              <p class="featured-desc">This website is about Afghan Proverbs</p>
+              <a href="https://zahrahabib21.github.io/p/" class="project-link"><i class="fas fa-arrow-right"></i> View Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Gallery -->
+      <div class="gallery">
+        <!-- Project 1 -->
+        <div class="frame">
+          <img src="img/hh.jpg" alt="Coding Project" class="project-image">
+          <div class="project-overlay">
+            <h3 class="project-title">My Work</h3>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+            </div>
+            <p class="project-description">simple work in my fist days</p>
+            <a href="https://zahrahabib21.github.io/me/" class="project-link"><i class="fas fa-arrow-right"></i> View Project</a>
+          </div>
+          <div class="flower top-left"></div>
+          <div class="flower middle-right"></div>
+          <div class="flower bottom-left"></div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="frame">
+          <img src="img/jj.jpg" alt="Finance App" class="project-image">
+          <div class="project-overlay">
+            <h3 class="project-title">zara gallery</h3>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+            </div>
+            <p class="project-description">a simple work of my in html and css</p>
+            <a href="tar.html" class="project-link"><i class="fas fa-arrow-right"></i> View Project</a>
+          </div>
+          <div class="flower top-left"></div>
+          <div class="flower middle-right"></div>
+          <div class="flower bottom-left"></div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="frame">
+          <img src="img/zz.jpg" alt="UI Design" class="project-image">
+          <div class="project-overlay">
+            <h3 class="project-title">Book recipe</h3>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+            </div>
+            <p class="project-description">make a recipe book in html and a bet of css</p>
+            <a href="https://zahrahabib21.github.io/helo/" class="project-link"><i class="fas fa-arrow-right"></i> View Project</a>
+          </div>
+          <div class="flower top-left"></div>
+          <div class="flower middle-right"></div>
+          <div class="flower bottom-left"></div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="frame">
+          <img src="img/ii.jpg" alt="Game Project" class="project-image">
+          <div class="project-overlay">
+            <h3 class="project-title">Form</h3>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+            </div>
+            <p class="project-description">a simple form </p>
+            <a href="sar.html" class="project-link"><i class="fas fa-arrow-right"></i> View Project</a>
+          </div>
+          <div class="flower top-left"></div>
+          <div class="flower middle-right"></div>
+          <div class="flower bottom-left"></div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="frame">
+          <img src="img/kk.jpg" alt="Dashboard Project" class="project-image">
+          <div class="project-overlay">
+            <h3 class="project-title">media work</h3>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+            </div>
+            <p class="project-description">media work </p>
+            <a href="https://zahrahabib21.github.io/media/" class="project-link"><i class="fas fa-arrow-right"></i> View Project</a>
+          </div>
+          <div class="flower top-left"></div>
+          <div class="flower middle-right"></div>
+          <div class="flower bottom-left"></div>
+        </div>
+
+
+        <!-- Project 6 -->
+        <div class="frame">
+          <img src="img/ff.jpg" alt="Dashboard Project" class="project-image">
+          <div class="project-overlay">
+            <h3 class="project-title">media work</h3>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+            </div>
+            <p class="project-description">media work </p>
+            <a href="https://zahrahabib21.github.io/pp/" class="project-link"><i class="fas fa-arrow-right"></i> View Project</a>
+          </div>
+          <div class="flower top-left"></div>
+          <div class="flower middle-right"></div>
+          <div class="flower bottom-left"></div>
+        </div>
+
+
+        <!-- Project 7 -->
+        <div class="frame">
+          <img src="img/nn.jpg" alt="Dashboard Project" class="project-image">
+          <div class="project-overlay">
+            <h3 class="project-title">Kardan University</h3>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+            </div>
+            <p class="project-description">make a site for kardan University with halp of html and css</p>
+            <a href="https://zahrahabib21.github.io/kar/" class="project-link"><i class="fas fa-arrow-right"></i> View Project</a>
+          </div>
+          <div class="flower top-left"></div>
+          <div class="flower middle-right"></div>
+          <div class="flower bottom-left"></div>
+        </div>
+
+
+        <!-- Project 8 -->
+        <div class="frame">
+          <img src="img/ll.jpg" alt="Dashboard Project" class="project-image">
+          <div class="project-overlay">
+            <h3 class="project-title">Calcuator</h3>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+            </div>
+            <p class="project-description">make it wnen i practiceing they html and css </p>
+            <a href="bar.html" class="project-link"><i class="fas fa-arrow-right"></i> View Project</a>
+          </div>
+          <div class="flower top-left"></div>
+          <div class="flower middle-right"></div>
+          <div class="flower bottom-left"></div>
+        </div>
+
+        <!-- Project 9 -->
+        <div class="frame">
+          <img src="img/mm.jpg" alt="Fitness App" class="project-image">
+          <div class="project-overlay">
+            <h3 class="project-title">Chess/h3>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+            </div>
+            <p class="project-description">make it wnen i practiceing they html and css </p>
+            <a href="grid.html" class="project-link"><i class="fas fa-arrow-right"></i> View Project</a>
+          </div>
+          <div class="flower top-left"></div>
+          <div class="flower middle-right"></div>
+          <div class="flower bottom-left"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    Designed with <i class="fas fa-heart" style="color:#ff6b6b;"></i> by Zahra | © 2025 All Rights Reserved
+  </footer>
+</body>
+</html>
+

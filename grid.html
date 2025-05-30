@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stylish Chessboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #485563, #29323c);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .chessboard {
+      display: grid;
+      grid-template-columns: repeat(8, 60px);
+      grid-template-rows: repeat(8, 60px);
+      border: 6px solid #111;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .square {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+    }
+
+    .white {
+      background-color: #413f3d;
+    }
+
+    .black {
+      background-color: #756f6a;
+    }
+
+    .dark-piece {
+      color: #222;
+    }
+
+    .light-piece {
+      color: #f9f9f9;
+      text-shadow: 0 0 3px #333;
+    }
+
+    @media screen and (max-width: 600px) {
+      .chessboard {
+        grid-template-columns: repeat(8, 40px);
+        grid-template-rows: repeat(8, 40px);
+      }
+
+      .square {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chessboard">
+    <!-- Row 1: Black major pieces -->
+    <div class="square white dark-piece"><i class="fas fa-chess-rook"></i></div>
+    <div class="square black dark-piece"><i class="fas fa-chess-knight"></i></div>
+    <div class="square white dark-piece"><i class="fas fa-chess-bishop"></i></div>
+    <div class="square black dark-piece"><i class="fas fa-chess-queen"></i></div>
+    <div class="square white dark-piece"><i class="fas fa-chess-king"></i></div>
+    <div class="square black dark-piece"><i class="fas fa-chess-bishop"></i></div>
+    <div class="square white dark-piece"><i class="fas fa-chess-knight"></i></div>
+    <div class="square black dark-piece"><i class="fas fa-chess-rook"></i></div>
+
+    <!-- Row 2: Black pawns -->
+    <div class="square black dark-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square white dark-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square black dark-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square white dark-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square black dark-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square white dark-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square black dark-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square white dark-piece"><i class="fas fa-chess-pawn"></i></div>
+
+    <!-- Rows 3–6: Empty -->
+    <!-- Row 3 -->
+    <div class="square white"></div>
+    <div class="square black"></div>
+    <div class="square white"></div>
+    <div class="square black"></div>
+    <div class="square white"></div>
+    <div class="square black"></div>
+    <div class="square white"></div>
+    <div class="square black"></div>
+
+    <!-- Row 4 -->
+    <div class="square black"></div>
+    <div class="square white"></div>
+    <div class="square black"></div>
+    <div class="square white"></div>
+    <div class="square black"></div>
+    <div class="square white"></div>
+    <div class="square black"></div>
+    <div class="square white"></div>
+
+    <!-- Row 5 -->
+    <div class="square white"></div>
+    <div class="square black"></div>
+    <div class="square white"></div>
+    <div class="square black"></div>
+    <div class="square white"></div>
+    <div class="square black"></div>
+    <div class="square white"></div>
+    <div class="square black"></div>
+
+    <!-- Row 6 -->
+    <div class="square black"></div>
+    <div class="square white"></div>
+    <div class="square black"></div>
+    <div class="square white"></div>
+    <div class="square black"></div>
+    <div class="square white"></div>
+    <div class="square black"></div>
+    <div class="square white"></div>
+
+    <!-- Row 7: White pawns -->
+    <div class="square white light-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square black light-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square white light-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square black light-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square white light-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square black light-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square white light-piece"><i class="fas fa-chess-pawn"></i></div>
+    <div class="square black light-piece"><i class="fas fa-chess-pawn"></i></div>
+
+    <!-- Row 8: White major pieces -->
+    <div class="square black light-piece"><i class="fas fa-chess-rook"></i></div>
+    <div class="square white light-piece"><i class="fas fa-chess-knight"></i></div>
+    <div class="square black light-piece"><i class="fas fa-chess-bishop"></i></div>
+    <div class="square white light-piece"><i class="fas fa-chess-queen"></i></div>
+    <div class="square black light-piece"><i class="fas fa-chess-king"></i></div>
+    <div class="square white light-piece"><i class="fas fa-chess-bishop"></i></div>
+    <div class="square black light-piece"><i class="fas fa-chess-knight"></i></div>
+    <div class="square white light-piece"><i class="fas fa-chess-rook"></i></div>
+  </div>
+
+</body>
+</html>
